@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     get '/about', to: 'homes#about'
     resources :facilities, only: [:show, :index]
     resources :customers, only: [:show, :update, :edit]
+      # 下記3行重複ルート回避
+      get '/customers/information', to: 'customers#show'
+      get '/customers/information/edit', to: 'customers#edit'
+      patch '/customers/information', to: 'customers#update'
   end
 
   # admin側ルーティング
