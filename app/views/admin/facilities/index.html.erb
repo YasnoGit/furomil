@@ -1,0 +1,35 @@
+<div class='container'>
+  <div class='row'>
+    <div class="p-3 mb-2 bg-light text-dark">施設一覧</div>
+
+    <!--新施設追加ページ遷移ボタン-->
+    <div class="text-right">
+      <%= link_to "＋" ,new_admin_facility_path, class: 'btn btn-warning' %>
+  　</div>
+
+  　<!--施設一覧表示-->
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>施設ID</th>
+          <th>施設名</th>
+          <th>エリア</th>
+          <th>料金</th>
+          <!--<th>評価</th>-->
+        </tr>
+      </thead>
+      <tbody>
+        <% @facilities.each do |facility| %>
+          <tr>
+            <td><%= facility.id %></td>
+            <td><%= link_to facility.name ,admin_facility_path(facility) %></td>
+            <td><%= facility.area.name %></td>
+            <td><%= facility.price.to_s(:delimited) %></td>
+            <!--<td>評価点数記載予定</td>-->
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

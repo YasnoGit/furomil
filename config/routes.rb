@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  # 下記namespace使用
+
   # public側ルーティング
   scope module: :public do
     root to: 'homes#top'

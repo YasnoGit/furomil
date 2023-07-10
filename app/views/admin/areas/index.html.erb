@@ -1,2 +1,46 @@
-<h1>Admin::Areas#index</h1>
-<p>Find me in app/views/admin/areas/index.html.erb</p>
+<!--エラー時フラッシュメッセージ-->
+<% if @area.errors.any? %>
+  エリア名を入力してください
+<% end %>
+<div>
+  <%= flash[:area_create] %>
+  <%= flash[:notice_update] %>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-xs-10 col-xs-offset-1">
+      <div class="p-3 mb-2 col-mb-2 bg-light text-dark">エリア一覧・追加</div><br>
+
+      <!--エリア新規登録フォーム-->
+      <%= form_with model: @area, url:admin_areas_path do |f| %>
+        <div class="form-group">
+          <tr>
+            <%= f.label :エリア名 %>
+            <%= f.text_field :name, class: 'form-control area_name' %>
+            <%= f.submit '新規登録', class: 'btn btn-secondary' %>
+          </tr>
+        </div>
+      <% end %>
+
+      <!--既存エリア一覧表示-->
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>エリア</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @areas.each do |area| %>
+            <tr>
+              <td><%= area.name %></td>
+              <td><%= link_to "編集する", edit_admin_area_path(area), class: 'btn btn-secondary' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

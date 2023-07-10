@@ -1,0 +1,61 @@
+<!--<%# if @facility.errors.any? %>-->
+<!--  <%#= @facility.errors.count %>件の未入力項目があります-->
+<!--<%# end %>-->
+
+<div class='container'>
+  <div class="p-3 mb-2 col-md-2 font-weight-bold bg-light text-dark">新施設登録</div><br>
+
+  <!--新施設登録フォーム-->
+  <%= form_with model: @facility, url:admin_facilities_path do |f| %>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-3"><%= f.label :施設画像 %></div>
+        <div class="col-lg-3"><%= f.file_field :image, accept: "image/*" %></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-3"><%= f.label :施設名 %></div>
+        <div class="col-lg-4"><%= f.text_field :name, class: 'form-control facility_name' %></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-3"><%= f.label :施設概要 %></div>
+        <div class="col-lg-4"><%= f.text_area :introduction, class: 'form-control facility_introduction' %></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-3"><%= f.label :エリア %></div>
+        <div class="col-lg-3"><%= f.collection_select :area_id, Area.all ,:id, :name, include_blank: "--選択してください--" %></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-3"><%= f.label :料金 %></div>
+        <div class="col-lg-1"><%= f.text_field :price, class: 'form-control facility_price' %></div>
+        円
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-3"><%= f.label :営業時間 %></div>
+        <div class="col-lg-4"><%= f.text_field :open, class: 'form-control facility_open' %></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-3"><%= f.label :定休日 %></div>
+        <div class="col-lg-4"><%= f.text_field :holiday, class: 'form-control facility_holiday' %></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-2"><%= f.submit '新規登録', class: 'btn btn-secondary' %></div>
+      </div>
+    </div>
+  <% end %>
+
+</div>

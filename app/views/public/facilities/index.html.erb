@@ -1,2 +1,19 @@
-<h1>Public::Facilities#index</h1>
-<p>Find me in app/views/public/facilities/index.html.erb</p>
+<div class='container'>
+  <div class="p-3 mb-2 col-md-2 font-weight-bold bg-light text-dark">
+    施設一覧（全<%= @facilities.count %>件）
+  </div>
+
+  <!--施設一覧表示-->
+  <div class='row'>
+  <% @facilities.each do |facility| %>
+    <div class="col-xs-3 m-3">
+      <%= link_to facility_path(facility.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
+        <%= image_tag facility.image, size: "250x200" %><br>
+        <%= facility.name %><br>
+        <%= facility.area.name %>
+      <% end %>
+    </div>
+  <% end %>
+
+  </div>
+</div>

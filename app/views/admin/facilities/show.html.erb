@@ -1,43 +1,59 @@
+<!--フラッシュメッセージ-->
+<div>
+  <%= flash[:notice_update] %>
+  <%= flash[:item_create] %>
+</div>
+
 <div class='container'>
+  <div class="p-3 mb-2 col-md-2 font-weight-bold bg-light text-dark">施設詳細</div><br>
   <div class='row'>
 
-    <!--施設詳細情報表示-->
+    <!--施設画像表示-->
     <div class="col-4">
-      <%= image_tag @facility.image, size: "200x200" %>
+      <%= image_tag @facility.image, size: "300x300" %>
     </div>
+
+    <!--施設詳細情報表示-->
     <div class="col-8">
       <div class="row">
   　　    <div class="col-12">
           <table class="table">
             <tbody>
               <tr>
-                <td><strong><%= @facility.name %></strong></td>
+                <th>施設名</th>
+                <td><%= @facility.name %></td>
               </tr>
               <!--<tr>-->
+              <!--  <th>評価</th>-->
               <!--  <td>施設評価表示予定</td>-->
               <!--</tr>-->
               <tr>
+                <th>施設概要</th>
                 <td><%= @facility.introduction %></td>
               </tr>
               <tr>
+                <th>エリア</th>
                 <td><%= @facility.area.name %></td>
               </tr>
               <tr>
+                <th>料金</th>
                 <td><%= @facility.price.floor.to_s(:delimited) %>円</td>
               </tr>
               <tr>
+                <th>営業時間</th>
                 <td><%= @facility.open %></td>
               </tr>
               <tr>
+                <th>定休日</th>
                 <td><%= @facility.holiday %></td>
               </tr>
             </tbody>
           </table>
+          <!--編集ページ遷移ボタン-->
+          <%= link_to "編集する",edit_admin_facility_path(@facility), class: 'btn btn-secondary' %>
         </div>
       </div>
     </div>
-
-    <!--以下コメントレビューフォーム・コメント一覧表示予定-->
 
   </div>
 </div>
