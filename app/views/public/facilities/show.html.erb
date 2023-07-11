@@ -37,7 +37,23 @@
       </div>
     </div>
 
-    <!--以下コメントレビューフォーム・コメント一覧表示予定-->
+    <!--以下レビューフォーム・一覧表示予定-->
+    <div>
+      <p>レビュー件数：<%= @facility.reviews.count %></p>
+        <% @facility.reviews.each do |review| %>
+          <%= review.customer.first_name %>
+          <%= review.created_at.strftime('%Y/%m/%d') %><%= review.comment %>
+          <% if review.customer == current_customer %>
+            <%= link_to "削除", facility_review_path(review.facility, review), method: :delete %>
+          <% end %>
+        <% end %>
+    </div>
+    <div>
+      <%= form_with(model: [@facility, @review], local: true) do |f| %>
+        <%= f.text_area :comment, placeholder: "コメントをここに" %>
+          <%= f.submit "レビューを投稿する" %>
+      <% end %>
+    </div>
 
   </div>
 </div>

@@ -20,7 +20,10 @@ Rails.application.routes.draw do
     get '/customers/warning', to: 'customers#warning'
   # 下記1行論理削除(退会)処理用ルーティング
     patch '/customers/withdrawal', to: 'customers#withdrawal'
-    resources :facilities, only: [:show, :index]
+    resources :facilities, only: [:show, :index]do
+      # ネスト、下記1行レビュー機能ルーティング
+      resources :reviews, only: [:create, :destroy]
+    end
     resources :customers, only: [:show, :update, :edit]
     # 下記3行重複ルート回避
       get '/customers/information', to: 'customers#show'
