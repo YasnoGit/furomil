@@ -1,0 +1,31 @@
+<div class='container'>
+  <div class="p-3 mb-2 col-md-2 font-weight-bold bg-light text-dark">検索結果</div>
+  <div class='row'>
+  <table class="table table-hover table-inverse">
+    
+  <!--検索対象モデルがFacilityの時 -->
+  <% if @range == "Facility" %>
+      <% @facilities.each do |facility| %>
+        <div class="col-xs-3 m-3">
+          <%= link_to facility_path(facility.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
+            <%= image_tag facility.image, size: "250x200" %><br>
+            <%= facility.name %><br>
+            <%= facility.area.name %>
+          <% end %>
+        </div>
+      <% end %>
+
+  <!--検索対象モデルがFacilityではない時(= 検索対象モデルがAreaの時) -->
+  <% else %>
+    <% @areas.each do |area| %>
+      <div class="col-xs-3 m-3">
+        <%= link_to facility_path(facility.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
+          <%= image_tag facility.image, size: "250x200" %><br>
+          <%= facility.name %><br>
+          <%= facility.area.name %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+</div>

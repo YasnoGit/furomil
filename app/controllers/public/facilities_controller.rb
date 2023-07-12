@@ -9,6 +9,7 @@ class Public::FacilitiesController < ApplicationController
     @facility = Facility.find(params[:id])
     @areas = Area.all
     @review = Review.new
+    @reviews = @facility.reviews
   end
 
 end

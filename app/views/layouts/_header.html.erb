@@ -6,14 +6,19 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
+    <!--検索フォームの部分テンプレート-->
+    <%= render 'public/facilities/search' %>
+
+    <!--下記遷移用ナビバー-->
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
 
         <!--customerログイン時-->
         <% if customer_signed_in? %>
-          <li class="customer-name">
-            ようこそ、<%= current_customer.last_name %> さん</br>
-          </li>
+          <!--<li class="customer-name">-->
+          <!--  ようこそ、<%#= current_customer.last_name %> さん</br>-->
+          <!--</li>-->
           <li class="ml-4">
             <%= link_to customer_path(current_customer),class: 'nav-link text-light' do %>
               マイページ

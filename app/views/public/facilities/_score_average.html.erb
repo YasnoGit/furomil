@@ -1,0 +1,25 @@
+<div id="average-review-rating" data-score=<%= @reviews.average(:score) %>></div>
+
+<!--<script>-->
+<!--  $('.average-review-rating').raty({-->
+<!--    readOnly: true,-->
+<!--    starOn: "<%#= asset_path('star-on.png') %>",-->
+<!--    starOff: "<%#= asset_path('star-off.png') %>",-->
+<!--    starHalf: "<%#= asset_path('star-half.png') %>",-->
+<!--    score: function() {-->
+<!--      return $(this).attr('data-score')-->
+<!--    }-->
+<!--  });-->
+<!--</script>-->
+<script>
+  var elem = document.getElementById('average-review-rating');
+  var opt = {
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn: '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    score: <%= @reviews.average(:score) %>,
+    readOnly: true,
+  };
+  raty(elem,opt);
+</script>

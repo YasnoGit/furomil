@@ -16,3 +16,12 @@ import "../stylesheets/application";
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+// Raty(レビュー機能用)
+import Raty from "packs/raty"
+// Raty呼び出し(レビュー機能用)
+window.raty = function(elem,opt){
+    var raty = new Raty(elem,opt)
+    raty.init();
+    return raty;
+}
