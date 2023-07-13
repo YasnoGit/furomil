@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about', to: 'homes#about'
-    get "search" => "searches#search"
+    get "search" => "searchs#search"
   # 下記1行退会警告画面用ルーティング
     get '/customers/warning', to: 'customers#warning'
   # 下記1行論理削除(退会)処理用ルーティング
@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     resources :facilities, only: [:show, :index]do
       # ネスト、下記1行レビュー機能ルーティング
       resources :reviews, only: [:create, :destroy]
+      # ネスト、下記1行ブックマーク機能ルーティング
+      resource :bookmarks, only: [:create, :destroy]
     end
     resources :customers, only: [:show, :update, :edit]
     # 下記3行重複ルート回避

@@ -3,6 +3,9 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(current_customer.id)
+    # 下記既存ブックマーク一覧表示用
+    bookmarks = Bookmark.where(customer_id: current_customer.id).pluck(:facility_id)
+    @bookmark_list = Facility.find(bookmarks)
   end
 
   def edit

@@ -43,4 +43,27 @@
     </table>
   </div>
 
+  <!--ブックマーク一覧表示-->
+  <div class="p-3 mb-2 bg-light text-dark">ブックマーク一覧</div>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>施設名</th>
+        <th>エリア</th>
+        <th>料金</th>
+        <!--<th>評価</th>-->
+      </tr>
+    </thead>
+    <tbody>
+      <% @bookmark_list.each do |facility| %>
+        <tr>
+          <td><%= link_to facility.name ,facility_path(facility) %></td>
+          <td><%= facility.area.name %></td>
+          <td><%= facility.price.to_s(:delimited) %></td>
+          <!--<td>評価点数記載予定</td>-->
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
 </div>

@@ -1,8 +1,17 @@
 class Facility < ApplicationRecord
 
+  # 画像保持
   has_one_attached :image
+
+  # アソシエーション
   belongs_to :area
   has_many :reviews, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
+
+  # ブックマーク新既確認
+  def bookmarked_by?(customer)
+    bookmarks.where(customer_id: customer).exists?
+  end
 
   # 検索方法分岐
   def self.looks(search, word)

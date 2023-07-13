@@ -23,6 +23,7 @@
 //     Popper: 'popper.js'
 //   })
 // )
+// ↑上記試行錯誤元コード(保険のため残し)
 
 // jquery導入(rails6.1用)
 const { environment } = require('@rails/webpacker')

@@ -31,6 +31,13 @@
               <tr>
                 <td><%= @facility.holiday %></td>
               </tr>
+              <tr>
+                <% if @facility.bookmarked_by?(current_customer) %>
+                  <td><%= link_to "ブックマークを外す", facility_bookmarks_path(@facility), method: :delete %></td>
+                <% else %>
+                  <td><%= link_to "ブックマーク", facility_bookmarks_path(@facility), method: :post %></td>
+                <% end %>
+              </tr>
             </tbody>
           </table>
         </div>
