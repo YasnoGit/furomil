@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about', to: 'homes#about'
-    get "search" => "searchs#search"
+    get "search" => "searches#search"
   # 下記1行退会警告画面用ルーティング
     get '/customers/warning', to: 'customers#warning'
   # 下記1行論理削除(退会)処理用ルーティング
