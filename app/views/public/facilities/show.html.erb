@@ -32,11 +32,10 @@
                 <td><%= @facility.holiday %></td>
               </tr>
               <tr>
-                <% if @facility.bookmarked_by?(current_customer) %>
-                  <td><%= link_to "ブックマークを外す", facility_bookmarks_path(@facility), method: :delete %></td>
-                <% else %>
-                  <td><%= link_to "ブックマーク", facility_bookmarks_path(@facility), method: :post %></td>
-                <% end %>
+                <!--非同期通信対応ブックマークボタン-->
+                <td id="bookmark_btn<%= @facility.id %>">
+                  <%= render 'public/bookmarks/bookmark', facility: @facility %>
+                </td>
               </tr>
             </tbody>
           </table>

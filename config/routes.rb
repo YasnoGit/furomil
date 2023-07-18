@@ -10,11 +10,18 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  # ゲストログイン用
+  devise_scope :customer do
+    post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
+  end
+  
   # 下記namespace使用
 
   # public側ルーティング
   scope module: :public do
     root to: 'homes#top'
+    # 下記1行ゲストログイン用
+    post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
     get '/about', to: 'homes#about'
     get "search" => "searches#search"
   # 下記1行退会警告画面用ルーティング

@@ -1,13 +1,15 @@
 class Public::BookmarksController < ApplicationController
   # before_action :authenticate_user!
 
+  # 下記遷移設定(redirect_to)は非同期通信用にコメントアウト
+
   def create
     @facility = Facility.find(params[:facility_id])
     bookmark = @facility.bookmarks.build(customer_id: current_customer.id)
     if bookmark.save
-      redirect_to request.referer
+      # redirect_to request.referer
     else
-      redirect_to request.referer
+      # redirect_to request.referer
     end
   end
 
@@ -16,9 +18,9 @@ class Public::BookmarksController < ApplicationController
     bookmark = @facility.bookmarks.find_by(customer_id: current_customer.id)
     if bookmark.present?
       bookmark.destroy
-      redirect_to request.referer
+      # redirect_to request.referer
     else
-      redirect_to request.referer
+      # redirect_to request.referer
     end
   end
 

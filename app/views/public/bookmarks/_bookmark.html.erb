@@ -1,0 +1,6 @@
+<!--ブックマークボタン用部分テンプレート→非同期通信接続-->
+<% if facility.bookmarked_by?(current_customer) %>
+  <%= link_to "ブックマークを外す", facility_bookmarks_path(facility), method: :delete, remote: true %>
+<% else %>
+  <%= link_to "ブックマーク", facility_bookmarks_path(facility), method: :post, remote: true %>
+<% end %>

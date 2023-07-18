@@ -14,5 +14,14 @@ class Customer < ApplicationRecord
   def create
     super && (is_deleted == false)
   end
+  
+  # ゲストログイン用
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      # customer.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+      # 例えば name を入力必須としているならば， customer.name = "ゲスト" なども必要
+    end
+  end
 
 end
