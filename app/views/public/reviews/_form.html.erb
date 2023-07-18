@@ -1,0 +1,22 @@
+<%= form_with(model: [facility, review], local: false) do |f| %>
+  <%= f.text_area :comment, placeholder: "コメントをここに", id: "comment_textarea" %>
+    <div id="rating-form">
+      <%= f.label :score,'評価 ', class:'col-md-3 col-form-label' %>
+      <%= f.hidden_field :score, id: :review_star %>
+    </div>
+    <%= f.submit "レビューを投稿する" %>
+  <% end %>
+
+<!-- レビューフォーム用javascript -->
+<script>
+  var elem = document.getElementById('rating-form');
+  var opt = {
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    scoreName: 'review[score]',
+    half: false
+  };
+  raty(elem,opt);
+
+</script>

@@ -43,60 +43,14 @@
       </div>
     </div>
 
-    <!--以下レビューフォーム・一覧表示-->
-    <div>
-      <p>レビュー件数：<%= @facility.reviews.count %></p>
-        <% @facility.reviews.each do |review| %>
-          <%= review.customer.first_name %>
-          <!--レビュースコア表示-->
-          <%= review.score%>
-          <div id="score-rate<%= review.id%>"></div>
+    <!--レビュー一覧-->
+    <div id="review_index">
+      <%= render 'public/reviews/index', facility: @facility %>
     </div>
-
-    <!-- レビューフォーム用javascript -->
-    <script>
-      var elem = document.getElementById('score-rate<%= review.id%>');
-      var opt = {
-        size     : 36,
-        starOff:  '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        score: <%= review.score %>,
-        readOnly: true,
-        half: false
-      };
-      raty(elem,opt);
-    </script>
-
-          <%= review.created_at.strftime('%Y/%m/%d') %><%= review.comment %>
-          <% if review.customer == current_customer %>
-            <%= link_to "削除", facility_review_path(review.facility, review), method: :delete %>
-          <% end %>
-        <% end %>
-
+    
+    <!--レビューフォーム-->
     <div>
-      <%= form_with(model: [@facility, @review], local: true) do |f| %>
-        <%= f.text_area :comment, placeholder: "コメントをここに" %>
-        <div id="rating-form">
-          <%= f.label :score,'評価 ', class:'col-md-3 col-form-label' %>
-          <%= f.hidden_field :score, id: :review_star %>
-        </div>
-        <%= f.submit "レビューを投稿する" %>
-      <% end %>
+      <%= render 'public/reviews/form', facility: @facility, review: @review %>
     </div>
-
   </div>
 </div>
-
-<!-- レビューフォーム用javascript -->
-<script>
-  var elem = document.getElementById('rating-form');
-  var opt = {
-    size     : 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    scoreName: 'review[score]',
-    half: false
-  };
-  raty(elem,opt);
-
-</script>
