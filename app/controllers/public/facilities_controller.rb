@@ -12,4 +12,19 @@ class Public::FacilitiesController < ApplicationController
     @reviews = @facility.reviews
   end
 
+  def rank
+    @facilities = Facility.
+      left_joins(:reviews).
+      distinct.
+      sort_by do |facility|
+        ranking = facility.reviews
+        if ranking.present?
+          ranking.map(&:score).sum / ranking.size
+        else
+          0
+        end
+      end.
+      reverse
+  end
+
 end

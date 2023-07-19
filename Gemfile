@@ -56,5 +56,12 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# 以下追加ジェム
+
+# ログイン機能
 gem 'devise'
+# JavaScript関連機能
 gem 'jquery-rails'
+# Google MAP API
+gem "gmaps4rails"
+gem "geocoder"

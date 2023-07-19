@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   devise_scope :customer do
     post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
   end
-  
+
   # 下記namespace使用
 
   # public側ルーティング
@@ -23,7 +23,10 @@ Rails.application.routes.draw do
     # 下記1行ゲストログイン用
     post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
     get '/about', to: 'homes#about'
+    # 下記1行検索機能用ルーティング
     get "search" => "searches#search"
+    # 下記1行ランキング機能用ルーティング
+    get '/rank', to: 'facilities#rank'
   # 下記1行退会警告画面用ルーティング
     get '/customers/warning', to: 'customers#warning'
   # 下記1行論理削除(退会)処理用ルーティング
