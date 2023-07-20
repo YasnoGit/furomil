@@ -8,6 +8,10 @@ class Facility < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
 
+  # G_Map軽度緯度取得用
+  geocoded_by :address
+  after_validation :geocode
+
   # ブックマーク新既確認
   def bookmarked_by?(customer)
     bookmarks.where(customer_id: customer).exists?

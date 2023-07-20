@@ -11,6 +11,8 @@ class Admin::FacilitiesController < ApplicationController
 
   def create
     @facility = Facility.new(facility_params)
+    binding.pry
+
     if @facility.save
       flash[:facility_create] = "施設を追加しました"
       # 一覧へ遷移
@@ -41,6 +43,6 @@ class Admin::FacilitiesController < ApplicationController
 
   private
   def facility_params
-    params.require(:facility).permit(:area_id, :name, :introduction, :price, :open, :holiday, :image)
+    params.require(:facility).permit(:area_id, :name, :introduction, :price, :open, :holiday, :image, :address)
   end
 end

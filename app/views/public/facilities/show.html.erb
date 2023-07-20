@@ -4,6 +4,7 @@
     <!--施設詳細情報表示-->
     <div class="col-4">
       <%= image_tag @facility.image, size: "200x200" %>
+      <%= render 'admin/facilities/map', facility: @facility %>
     </div>
     <div class="col-8">
       <div class="row">
@@ -20,7 +21,10 @@
                 <td><%= @facility.introduction %></td>
               </tr>
               <tr>
-                <td><%= @facility.area.name %></td>
+                <td><%= @facility.area.name %>エリア</td>
+              </tr>
+              <tr>
+                <td><%= @facility.address %></td>
               </tr>
               <tr>
                 <td><%= @facility.price.floor.to_s(:delimited) %>円</td>
@@ -47,7 +51,7 @@
     <div id="review_index">
       <%= render 'public/reviews/index', facility: @facility %>
     </div>
-    
+
     <!--レビューフォーム-->
     <div>
       <%= render 'public/reviews/form', facility: @facility, review: @review %>

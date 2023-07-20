@@ -11,6 +11,7 @@
     <!--施設画像表示-->
     <div class="col-4">
       <%= image_tag @facility.image, size: "300x300" %>
+      <%= render 'admin/facilities/map', facility: @facility %>
     </div>
 
     <!--施設詳細情報表示-->
@@ -34,6 +35,10 @@
               <tr>
                 <th>エリア</th>
                 <td><%= @facility.area.name %></td>
+              </tr>
+              <tr>
+                <th>住所</th>
+                <td><%= @facility.address %></td>
               </tr>
               <tr>
                 <th>料金</th>
