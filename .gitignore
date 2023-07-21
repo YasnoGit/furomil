@@ -39,5 +39,5 @@
 yarn-debug.log*
 .yarn-integrity
 
-; Gitで管理しないデータ(APIキーなど)
-.env
+# Gitで管理しないデータ(APIキーやデプロイ関連データなど)
+/.env
