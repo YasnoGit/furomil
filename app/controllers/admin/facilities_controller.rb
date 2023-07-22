@@ -11,8 +11,6 @@ class Admin::FacilitiesController < ApplicationController
 
   def create
     @facility = Facility.new(facility_params)
-    binding.pry
-
     if @facility.save
       flash[:facility_create] = "施設を追加しました"
       # 一覧へ遷移
