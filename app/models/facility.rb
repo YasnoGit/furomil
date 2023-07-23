@@ -2,11 +2,12 @@ class Facility < ApplicationRecord
 
   # 画像保持
   has_one_attached :image
-
   # アソシエーション
   belongs_to :area
   has_many :reviews, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  # バリデーション
+  validates :image, :area_id, :name, :introduction, :price, :open, :holiday, :address, presence: true
 
   # G_Map軽度緯度取得用
   geocoded_by :address

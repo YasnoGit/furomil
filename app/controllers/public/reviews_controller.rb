@@ -1,5 +1,5 @@
 class Public::ReviewsController < ApplicationController
-
+  before_action :authenticate_customer!
   # 下記遷移設定非同期通信用コメントアウト
 
   def create

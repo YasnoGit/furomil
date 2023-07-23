@@ -1,7 +1,12 @@
 <!--フラッシュメッセージ-->
-<!--<%# if @facility.errors.any? %>-->
-<!--  <%#= @facility.errors.count %>件の未入力項目があります-->
-<!--<%# end %>-->
+<% if @facility.errors.any? %>
+  <%= @facility.errors.count %>件の未入力項目があります
+  <ul>
+    <% @facility.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <div class='container'>
   <div class="p-3 mb-2 col-md-2 font-weight-bold bg-light text-dark">新施設登録</div><br>

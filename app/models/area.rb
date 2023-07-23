@@ -1,6 +1,8 @@
 class Area < ApplicationRecord
-
+  
+  # アソシエーション
   has_many :facility, dependent: :destroy
+  # バリデーション
   validates :name, presence: true
 
   # 検索方法分岐

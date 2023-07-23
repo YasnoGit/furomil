@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-  # before_action :authenticate_customer!
+  before_action :authenticate_customer!
 
   def show
     @customer = Customer.find(current_customer.id)
@@ -15,7 +15,7 @@ class Public::CustomersController < ApplicationController
   def destroy
   end
 
-  def updates
+  def update
     @customer = Customer.find(current_customer.id)
     if @customer.update(customer_params)
       # 編集完了後会員詳細へ遷移
