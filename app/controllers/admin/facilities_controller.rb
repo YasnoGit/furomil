@@ -16,6 +16,7 @@ class Admin::FacilitiesController < ApplicationController
       # 一覧へ遷移
       redirect_to admin_facility_path(@facility)
     else
+      flash[:facility_uncreate] = "施設の追加に失敗しました"
       redirect_back fallback_location: root_path
     end
   end
@@ -31,10 +32,12 @@ class Admin::FacilitiesController < ApplicationController
   def update
     @facility = Facility.find(params[:id])
     if @facility.update(facility_params)
-      # 一覧へ遷移
+
+      flash[:facility_update] = "施設情報を更新しました"
+       # 一覧へ遷移
       redirect_to admin_facility_path
-      flash[:notice_update] = "施設情報を更新しました"
     else
+      flash[:facility_unupdate] = "施設情報の更新に失敗しました"
       redirect_back fallback_location: root_path
     end
   end

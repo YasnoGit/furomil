@@ -27,9 +27,9 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
     # 下記1行ランキング機能用ルーティング
     get '/rank', to: 'facilities#rank'
-  # 下記1行退会警告画面用ルーティング
+    # 下記1行退会警告画面用ルーティング
     get '/customers/warning', to: 'customers#warning'
-  # 下記1行論理削除(退会)処理用ルーティング
+    # 下記1行論理削除(退会)処理用ルーティング
     patch '/customers/withdrawal', to: 'customers#withdrawal'
     resources :facilities, only: [:show, :index]do
       # ネスト、下記1行レビュー機能ルーティング

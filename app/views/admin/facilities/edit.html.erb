@@ -1,7 +1,7 @@
-<!--エラー時フラッシュメッセージ-->
-<!--<%# if @facility.errors.any? %>-->
-<!--  <%#= @facility.errors.count %>件の未入力項目があります-->
-<!--<%# end %>-->
+<!--フラッシュメッセージ-->
+<div>
+  <%= flash[:facility_unupdate] %>
+</div>
 
 <div class='container'>
   <div class="p-3 mb-2 col-md-2 font-weight-bold bg-light text-dark">施設情報編集</div><br>

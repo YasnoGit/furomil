@@ -1,4 +1,5 @@
 class Public::FacilitiesController < ApplicationController
+  before_action :authenticate_customer!
 
   def index
     @areas = Area.all
