@@ -1,26 +1,47 @@
-<p>レビュー件数：<%= facility.reviews.count %></p>
-<% facility.reviews.each do |review| %>
-  <%= review.customer.first_name %>
-  <!--レビュースコア表示-->
-  <%= review.score%>
-  <div id="score-rate<%= review.id%>"></div>
-
-  <!-- レビュー一覧用javascript -->
-  <script>
-    var elem = document.getElementById('score-rate<%= review.id%>');
-    var opt = {
-      size     : 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      score: <%= review.score %>,
-      readOnly: true,
-      half: false
-    };
-    raty(elem,opt);
-  </script>
-
-  <%= review.created_at.strftime('%Y/%m/%d') %><%= review.comment %>
-  <% if review.customer == current_customer %>
-    <%= link_to "削除", facility_review_path(review.facility, review), method: :delete, remote: true %>
-  <% end %>
-<% end %>
+<p>
+  <strong>
+    <%= image_tag 'review.png', size: '80x80' %>
+    レビュー一覧(<%= facility.reviews.count %>件)
+  </strong>
+</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>投稿者名</th>
+        <th>スコア</th>
+        <th>コメント</th>
+        <th>評価日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% facility.reviews.each do |review| %>
+        <tr>
+          <td><%= review.customer.first_name %></td>
+          <td>
+            <!--レビュースコア表示-->
+            <div id="score-rate<%= review.id%>"></div>
+            <!-- レビュー一覧用javascript -->
+            <script>
+              var elem = document.getElementById('score-rate<%= review.id%>');
+              var opt = {
+                size     : 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                score: <%= review.score %>,
+                readOnly: true,
+                half: false
+              };
+              raty(elem,opt);
+            </script>
+          </td>
+          <td><%= review.comment %></td>
+          <td>
+            <%= review.created_at.strftime('%Y/%m/%d') %>
+            <% if review.customer == current_customer %>
+              <%= link_to "削除", facility_review_path(review.facility, review), method: :delete, remote: true %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

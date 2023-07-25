@@ -3,8 +3,11 @@
 
     <!--施設詳細情報表示-->
     <div class="col-4">
-      <%= image_tag @facility.image, size: "200x200" %>
-      <%= render 'admin/facilities/map', facility: @facility %>
+      <p class="mb-3"><%= image_tag @facility.image, size: "250x250" %></p>
+      <!--Google Map Api 地図表示-->
+      <p class="mb-3"><%= render 'admin/facilities/map', facility: @facility %></p>
+      <!--レビューフォーム-->
+      <p class="mt-5"><%= render 'public/reviews/form', facility: @facility, review: @review %></p>
     </div>
     <div class="col-8">
       <div class="row">
@@ -12,7 +15,11 @@
           <table class="table">
             <tbody>
               <tr>
-                <td><strong><%= @facility.name %></strong></td>
+                <td>
+                  <%= image_tag 'facility.png', size: '80x80' %>
+                  <strong>
+                    施設名：<%= @facility.name %></strong>
+                </td>
               </tr>
               <tr>
                 <td><%= render 'score_average' %></td>
@@ -43,18 +50,12 @@
               </tr>
             </tbody>
           </table>
+          <!--非同期通信対応レビュー-->
+          <div id="review_index">
+            <%= render 'public/reviews/index', facility: @facility %>
+          </div>
         </div>
       </div>
-    </div>
-
-    <!--レビュー一覧-->
-    <div id="review_index">
-      <%= render 'public/reviews/index', facility: @facility %>
-    </div>
-
-    <!--レビューフォーム-->
-    <div>
-      <%= render 'public/reviews/form', facility: @facility, review: @review %>
     </div>
   </div>
 </div>

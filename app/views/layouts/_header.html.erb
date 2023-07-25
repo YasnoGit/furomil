@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+<nav class="navbar navbar-expand-lg navbar-right bg-secondary">
   <div class="container">
 
     <!--ロゴpushでtopページへ遷移-->
@@ -15,12 +15,13 @@
     <!--下記遷移用ナビバー-->
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
-
+        <%= image_tag "header.png", style: "width: 35px;" %>
         <!--customerログイン時-->
         <% if customer_signed_in? %>
-          <!--<li class="customer-name">-->
-          <!--  ようこそ、<%#= current_customer.last_name %> さん</br>-->
-          <!--</li>-->
+          <li class="ml-4">
+            <%= link_to about_path,class: 'nav-link text-light' do %>
+              About
+            <% end %>
           <li class="ml-4">
             <%= link_to customer_path(current_customer),class: 'nav-link text-light' do %>
               マイページ
