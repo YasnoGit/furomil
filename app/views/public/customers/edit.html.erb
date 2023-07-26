@@ -1,5 +1,6 @@
 <div class="container">
-  <div class="p-3 mb-2 col-md-2 font-weight-bold bg-light text-dark">メンバー情報編集</div>
+  <div class="p-3 mb-2 col-md-2 font-weight-bold bg-light text-dark">
+    <%= image_tag 'mypage.png', size: '40x40' %>会員情報編集</div>
 
   <!--登録情報編集フォーム-->
   <%= form_with model: @customer, url: customer_path do |f| %>

@@ -4,7 +4,9 @@
 </div>
 
 <div class='container'>
-  <div class="p-3 mb-2 col-md-2 font-weight-bold bg-light text-dark">施設情報編集</div><br>
+  <div class="p-3 mb-2 col-md-2 font-weight-bold bg-light text-dark">
+    <%= image_tag 'form.png', size: '40x40' %>
+    施設情報編集</div><br>
 
   <!--施設情報編集フォーム-->
   <%= form_with model: @facility, url:admin_facility_path(@facility.id), method: :patch do |f| %>

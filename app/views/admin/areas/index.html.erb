@@ -10,7 +10,10 @@
 <div class='container'>
   <div class='row'>
     <div class="col-xs-10 col-xs-offset-1">
-      <div class="p-3 mb-2 col-mb-2 bg-light text-dark">エリア一覧・追加</div><br>
+      <div class="p-3 mb-2 col-mb-2 bg-light text-dark">
+        <%= image_tag 'area.png', size: '40x40' %>
+        エリア一覧・追加
+      </div><br>
 
       <!--エリア新規登録フォーム-->
       <%= form_with model: @area, url:admin_areas_path do |f| %>

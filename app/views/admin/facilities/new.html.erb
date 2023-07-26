@@ -4,7 +4,8 @@
 </div>
 
 <div class='container'>
-  <div class="p-3 mb-2 col-md-2 font-weight-bold bg-light text-dark">新施設登録</div><br>
+  <div class="p-3 mb-2 col-md-2 font-weight-bold bg-light text-dark">
+    <%= image_tag 'form.png', size: '40x40' %>新施設登録</div><br>
 
   <!--新施設登録フォーム-->
   <%= form_with model: @facility, url:admin_facilities_path do |f| %>

@@ -5,12 +5,13 @@
 </div>
 
 <div class='container'>
-  <div class="p-3 mb-2 col-md-2 font-weight-bold bg-light text-dark">施設詳細</div><br>
+  <div class="p-3 mb-2 col-md-2 font-weight-bold bg-light text-dark">
+    <%= image_tag 'facility.png', size: '40x40' %>施設詳細</div><br>
   <div class='row'>
 
     <!--施設画像表示-->
     <div class="col-4">
-      <%= image_tag @facility.image, size: "300x300" %>
+      <%= image_tag @facility.image, size: "250x250" %>
       <%= render 'admin/facilities/map', facility: @facility %>
     </div>
 
