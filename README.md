@@ -25,7 +25,8 @@
 - 行った温泉施設の評価やレビューを知りたい、共有したい時
 ​
 ## 設計書
-後ほど作成
+- customer用(https://app.diagrams.net/#G1Wb1GctbOla9sFfiNRXqlLRn44XbCnAUR)
+- admin用(https://app.diagrams.net/#G1I5jSwSGV_uyAHnFNhlb_KMGDUIUmNDg3)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
@@ -37,4 +38,4 @@
 ## 使用素材
 - フリーイラスト素材として以下を使用
 - ダ鳥獣戯画(https://chojugiga.com/)
-- illustAC(https://www.ac-illust.com/)
+- photoAC(https://www.photo-ac.com/)
