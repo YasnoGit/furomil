@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-    @facilities = Facility.order("RANDOM()").all
+    @facilities = Facility.order("rand()").all
     # ランキング機能用
     # @ranks=Facility.find(Review.group(:facility_id).order('avg(score) desc').pluck(:post_id))
   end
