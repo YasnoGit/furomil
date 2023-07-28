@@ -14,6 +14,7 @@ class Public::FacilitiesController < ApplicationController
   end
 
   def rank
+    # ランキング機能用
     @facilities = Facility.
       left_joins(:reviews).
       distinct.
