@@ -1,5 +1,7 @@
 class Public::ReviewsController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!, if: :customer_signed_in?
+  before_action :authenticate_admin!, if: :admin_signed_in?
+
   # 下記遷移設定非同期通信用コメントアウト
 
   def create

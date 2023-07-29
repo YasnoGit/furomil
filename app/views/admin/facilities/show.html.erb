@@ -57,6 +57,10 @@
           </table>
           <!--編集ページ遷移ボタン-->
           <%= link_to "編集する",edit_admin_facility_path(@facility), class: 'btn btn-secondary' %>
+          </br>
+          <div id="review_index">
+            <%= render 'public/reviews/index', facility: @facility %>
+          </div>
         </div>
       </div>
     </div>
