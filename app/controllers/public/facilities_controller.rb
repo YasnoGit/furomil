@@ -3,7 +3,8 @@ class Public::FacilitiesController < ApplicationController
 
   def index
     @areas = Area.all
-    @facilities = Facility.all
+    #ページネーション
+    @facilities = Facility.page(params[:page]).per(8)
   end
 
   def show

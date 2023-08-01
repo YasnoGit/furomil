@@ -2,7 +2,7 @@ class Admin::FacilitiesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @facilities = Facility.all
+    @facilities = Facility.page(params[:page]).per(10)
   end
 
   def new

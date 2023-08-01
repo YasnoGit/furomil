@@ -3,7 +3,7 @@ class Admin::AreasController < ApplicationController
 
   def index
     @area = Area.new
-    @areas = Area.all
+    @areas = Area.page(params[:page]).per(6)
   end
 
   def create
