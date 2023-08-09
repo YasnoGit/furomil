@@ -1,5 +1,5 @@
 class Public::BookmarksController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_customer!, if: :customer_signed_in?
 
   # 下記遷移設定(redirect_to)は非同期通信用にコメントアウト
 

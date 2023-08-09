@@ -1,5 +1,5 @@
 class Admin::FacilitiesController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, if: :admin_signed_in?
 
   def index
     @facilities = Facility.page(params[:page]).per(10)

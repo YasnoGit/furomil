@@ -1,5 +1,5 @@
 class Public::FacilitiesController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!, if: :customer_signed_in?
 
   def index
     @areas = Area.all
