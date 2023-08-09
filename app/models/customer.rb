@@ -8,9 +8,12 @@ class Customer < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   # バリデーション
-  validates :email, :last_name, :first_name, :post_code, :address, :phone_number, presence: true
+  validates :email, :last_name, :first_name, :last_name_kana, :first_name_kana, :post_code, :address, :phone_number, presence: true
   # カナ制限
-  validates :last_name_kana, :first_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。' }
+  validates :last_name_kana, :first_name_kana, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。' }
+  # 文字数制限
+  validates :post_code, length: { maximum: 7 }
+  validates :phone_number, length: { maximum: 11 }
 
   # 退会機能用
   def create
