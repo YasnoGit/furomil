@@ -1,9 +1,9 @@
 class Area < ApplicationRecord
-  
+
   # アソシエーション
   has_many :facility, dependent: :destroy
   # バリデーション
-  validates :name, presence: true
+  validates :name, length: { minimum: 2, maximum: 4 }, presence: true
 
   # 検索方法分岐
   def self.looks(search, word)

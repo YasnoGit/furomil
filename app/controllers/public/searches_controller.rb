@@ -1,5 +1,5 @@
 class Public::SearchesController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_customer!, if: :customer_signed_in?
 
   def search
     @range = params[:range]
